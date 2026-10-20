@@ -1,0 +1,197 @@
+/* ---------- Lớp cánh hoa ---------- */
+
+.petal-field {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* ---------- Trái tim khi chạm ---------- */
+
+.tap-hearts {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.tap-heart {
+  position: absolute;
+  width: var(--s);
+  height: var(--s);
+  margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2);
+  opacity: 0;
+  filter: drop-shadow(0 2px 6px rgba(161, 45, 79, 0.35));
+  animation: heart-rise var(--d) cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.tap-heart svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes heart-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.2) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translate3d(calc(var(--dx) * 0.15), calc(var(--rise) * -0.12), 0) scale(1.1) rotate(calc(var(--r) * 0.2));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx), calc(var(--rise) * -1), 0) scale(0.75) rotate(var(--r));
+  }
+}
+
+/* ---------- Con trỏ phát sáng (desktop) ---------- */
+
+.cursor-glow,
+.cursor-dot {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 35;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  will-change: transform;
+}
+
+.cursor-glow {
+  width: 360px;
+  height: 360px;
+  margin: -180px 0 0 -180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 196, 214, 0.32) 0%, rgba(236, 213, 162, 0.14) 35%, transparent 68%);
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--gold-300);
+  box-shadow: 0 0 12px 3px rgba(236, 213, 162, 0.8);
+}
+
+.cursor-glow.is-visible {
+  opacity: 1;
+}
+
+.cursor-dot.is-visible {
+  opacity: 0.9;
+}
+
+/* ---------- Nút nhạc nền ---------- */
+
+.music-toggle {
+  position: fixed;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: var(--pearl);
+  background: radial-gradient(circle at 30% 25%, rgba(161, 45, 79, 0.92), rgba(63, 13, 32, 0.92));
+  box-shadow:
+    0 0 0 1px rgba(236, 213, 162, 0.65) inset,
+    0 8px 24px -6px rgba(63, 13, 32, 0.55);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.music-toggle__icon {
+  display: grid;
+  place-items: center;
+}
+
+.music-toggle__ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 1px dashed rgba(220, 185, 116, 0.7);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.music-toggle.is-playing .music-toggle__ring {
+  opacity: 1;
+  animation: orbit-spin 8s linear infinite;
+}
+
+.music-toggle.is-playing::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(243, 174, 192, 0.6);
+  animation: music-pulse 2s ease-out infinite;
+}
+
+@keyframes music-pulse {
+  to {
+    box-shadow: 0 0 0 16px rgba(243, 174, 192, 0);
+  }
+}
+
+.music-toggle__bars {
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 9px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.music-toggle__bars i {
+  width: 2px;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--gold-400);
+  transform-origin: bottom;
+  transform: scaleY(0.3);
+}
+
+.music-toggle.is-playing .music-toggle__bars {
+  opacity: 1;
+}
+
+.music-toggle.is-playing .music-toggle__bars i {
+  animation: eq 0.9s ease-in-out infinite alternate;
+}
+
+.music-toggle__bars i:nth-child(2) {
+  animation-delay: -0.3s !important;
+}
+.music-toggle__bars i:nth-child(3) {
+  animation-delay: -0.6s !important;
+}
+.music-toggle__bars i:nth-child(4) {
+  animation-delay: -0.15s !important;
+}
+
+@keyframes eq {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+

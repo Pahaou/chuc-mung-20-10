@@ -1,0 +1,171 @@
+.wish {
+  padding-top: clamp(96px, 14vw, 150px);
+}
+
+.wish__card {
+  position: relative;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.5px;
+  border-radius: 30px;
+  background: var(--gold-gradient);
+  box-shadow:
+    0 40px 80px -40px rgba(94, 21, 48, 0.45),
+    0 18px 40px -24px rgba(167, 122, 53, 0.4),
+    0 0 0 8px rgba(255, 250, 245, 0.35);
+}
+
+.wish__paper {
+  position: relative;
+  border-radius: 28.5px;
+  padding: clamp(96px, 12vw, 120px) clamp(24px, 7vw, 84px) clamp(56px, 8vw, 80px);
+  background:
+    radial-gradient(90% 60% at 50% 0%, rgba(253, 232, 237, 0.9) 0%, transparent 70%),
+    radial-gradient(70% 50% at 100% 100%, rgba(246, 232, 200, 0.55) 0%, transparent 70%),
+    linear-gradient(180deg, #fffcf8 0%, var(--pearl) 60%, #fdf3ee 100%);
+  overflow: hidden;
+}
+
+.wish__paper::before {
+  content: '';
+  position: absolute;
+  inset: clamp(10px, 1.8vw, 16px);
+  border: 1px solid rgba(195, 154, 82, 0.45);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.wish__corner {
+  position: absolute;
+  width: clamp(64px, 11vw, 104px);
+  height: auto;
+  pointer-events: none;
+}
+
+.wish__corner--tl {
+  top: clamp(14px, 2vw, 22px);
+  left: clamp(14px, 2vw, 22px);
+}
+
+.wish__corner--br {
+  right: clamp(14px, 2vw, 22px);
+  bottom: clamp(14px, 2vw, 22px);
+  transform: rotate(180deg);
+}
+
+.wish__seal {
+  position: absolute;
+  top: clamp(22px, 3.4vw, 30px);
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c23c63, var(--wine-700) 70%);
+  box-shadow:
+    0 0 0 3px rgba(161, 45, 79, 0.18),
+    0 6px 14px -4px rgba(94, 21, 48, 0.6),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.25),
+    inset 0 2px 4px rgba(255, 200, 215, 0.35);
+}
+
+.wish__seal svg {
+  width: 20px;
+  height: 18px;
+  fill: var(--gold-300);
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
+}
+
+.wish__body {
+  position: relative;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.wish__greeting {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--wine-600);
+  margin-bottom: clamp(16px, 2.6vw, 24px);
+}
+
+.wish__text {
+  font-family: var(--font-display);
+  font-size: clamp(1.14rem, 2.3vw, 1.32rem);
+  font-weight: 500;
+  line-height: 1.75;
+  color: var(--ink);
+  text-wrap: pretty;
+}
+
+.wish__text + .wish__text {
+  margin-top: 1.05em;
+}
+
+.wish__greeting + .wish__text::first-letter {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  font-size: 3.4em;
+  line-height: 0.8;
+  font-weight: 600;
+  color: var(--wine-600);
+}
+
+.wish__sign {
+  margin-top: clamp(30px, 5vw, 44px);
+  text-align: right;
+}
+
+.wish__divider {
+  display: block;
+  width: 120px;
+  height: 1px;
+  margin: 0 0 18px auto;
+  background: linear-gradient(90deg, transparent, var(--gold-500));
+}
+
+.wish__signature {
+  font-family: var(--font-script);
+  font-size: clamp(1.7rem, 4.2vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--wine-600);
+}
+
+.wish__sender {
+  margin-top: 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  margin: clamp(48px, 7vw, 72px) auto 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--gold-600);
+}
+
+.scroll-cue svg {
+  animation: cue-bob 2.2s ease-in-out infinite;
+}
+
+@keyframes cue-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}

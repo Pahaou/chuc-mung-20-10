@@ -1,0 +1,162 @@
+.finale {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(90px, 14vw, 150px) var(--gutter) 0;
+  overflow: hidden;
+  color: var(--pearl);
+  border-radius: 50% 50% 0 0 / clamp(40px, 8vw, 110px) clamp(40px, 8vw, 110px) 0 0;
+  background:
+    radial-gradient(80% 60% at 50% 35%, #7a1e3f 0%, var(--wine-800) 50%, var(--wine-950) 100%);
+  box-shadow: 0 -30px 60px -30px rgba(94, 21, 48, 0.35);
+}
+
+.fireworks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.finale__aura {
+  position: absolute;
+  left: 50%;
+  top: 28%;
+  width: min(900px, 140vw);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 174, 192, 0.25) 0%, rgba(236, 213, 162, 0.08) 40%, transparent 65%);
+  pointer-events: none;
+  animation: aura-breathe 7s ease-in-out infinite;
+}
+
+@keyframes aura-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+.finale__content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.finale__bloom {
+  width: clamp(120px, 22vw, 170px);
+  height: auto;
+  overflow: visible;
+  margin-bottom: clamp(28px, 5vw, 44px);
+  filter: drop-shadow(0 0 24px rgba(243, 174, 192, 0.45));
+  animation: bloom-turn 60s linear infinite;
+}
+
+@keyframes bloom-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.finale__line {
+  max-width: 560px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--rose-200);
+  text-wrap: balance;
+}
+
+.finale__title {
+  margin-top: clamp(12px, 2.5vw, 22px);
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(3rem, 8.6vw, 5.8rem);
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.finale__title .gold-text {
+  padding: 0 0.12em;
+  filter: drop-shadow(0 0 24px rgba(236, 213, 162, 0.35));
+  animation: gold-sheen 6s ease-in-out infinite;
+}
+
+.finale__heart {
+  display: inline-block;
+  margin-left: 0.2em;
+  font-family: var(--font-sans);
+  font-size: 0.5em;
+  color: var(--rose-300);
+  text-shadow: 0 0 20px rgba(243, 174, 192, 0.9);
+  animation: heart-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes heart-glow {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 190, 210, 1);
+  }
+}
+
+
+.finale__date {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: clamp(18px, 3vw, 28px);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3.4vw, 1.9rem);
+  letter-spacing: 0.35em;
+  padding-left: 0.35em;
+  color: var(--gold-300);
+}
+
+.finale__date span {
+  width: clamp(40px, 8vw, 80px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-400));
+}
+
+.finale__date span:last-child {
+  background: linear-gradient(90deg, var(--gold-400), transparent);
+}
+
+.footer {
+  position: relative;
+  margin-top: clamp(60px, 10vw, 100px);
+  padding: 26px 0 max(26px, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(236, 213, 162, 0.18);
+  text-align: center;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(249, 208, 218, 0.55);
+}
+
+.footer span {
+  color: var(--rose-300);
+}
